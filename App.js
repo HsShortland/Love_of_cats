@@ -4,7 +4,6 @@ import CuteCats from './src/Screens/CuteCats';
 import FilmsWithCats from './src/Screens/FilmsWithCats';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CuteCats from './src/Screens/CuteCats';
 
 const Stack = createNativeStackNavigator();
 
