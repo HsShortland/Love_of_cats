@@ -32,10 +32,6 @@ class FilmsWithCats extends React.Component {
                 <Text style={styles.text}>A list of great films containing cats, some of which may surprise you!</Text>
                 <Button1 ></Button1>
                 <Button2></Button2>
-                <Button title="Go to Home Screen"
-                    onPress={() =>
-                        this.props.navigation.navigate('Home')
-                    }></Button>
             </View>
         )
     }

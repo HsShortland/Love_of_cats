@@ -38,9 +38,6 @@ class CuteCats extends React.Component {
                     <Image style={styles.image} source={require('../../assets/street_art_two_cats.jpg')} />
                     <Button1 ></Button1>
                     <Button2></Button2>
-                    <Button title="Go to Home Screen" onPress={() => this.props.navigation.navigate('Home')}></Button>
-                    <Button title="Go to About The Dev" onPress={() => this.props.navigation.navigate('AboutTheDev')}></Button>
-                    <Button title="Go Films With Cats" onPress={() => this.props.navigation.navigate('FilmsWithCats')}></Button>
                 </ScrollView>
             </View>
         )
