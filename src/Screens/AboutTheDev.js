@@ -32,10 +32,6 @@ class AboutTheDev extends React.Component {
                 <Text style={styles.text}>Totally obsessed with cats!</Text>
                 <Button1 ></Button1>
                 <Button2></Button2>
-                <Button title="Go to Home Screen"
-                    onPress={() =>
-                        this.props.navigation.navigate('Home')
-                    }></Button>
             </View>
         )
     }
