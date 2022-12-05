@@ -31,6 +31,7 @@ class CuteCats extends React.Component {
                     <StatusBar style="auto" />
                     <Button title="I love cats!" onPress={this.update}></Button>
                     <Text style={styles.text}>Random cat images!</Text>
+                    <StatusBar style="auto" />
                     <Image style={styles.image} source={require('../../assets/cat_in_a_window.jpg')} />
                     <Image style={styles.image} source={require('../../assets/cute_cat_close_up.jpg')} />
                     <Image style={styles.image} source={require('../../assets/cute_moustache_cat.jpg')} />
