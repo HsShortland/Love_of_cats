@@ -33,10 +33,10 @@ class FilmsWithCats extends React.Component {
                 <Text style={styles.text}>A list of great films containing cats, some of which may surprise you!</Text>
                 <FontAwesome.Button title="Cat Films!" name="film" backgroundColor={'#63a4ff'} onPress={this.update}>Cat Films!</FontAwesome.Button>
                         <Text style={styles.text}>The Three Lives of Thomasina</Text>
-                        <Text style={styles.text}>Aliens</Text>
+                        <Text style={styles.text}>Alien</Text>
                         <Text style={styles.text}>The Cat From Outer Space</Text>
                         <Text style={styles.text}>iRobot</Text>
-                <Button1 ></Button1>
+                <Button1></Button1>
                 <Button2></Button2>
             </View>
         )

@@ -38,7 +38,7 @@ class CuteCats extends React.Component {
                     <Image style={styles.image} source={require('../../assets/street_art_cat_with_wool.jpg')} />
                     <Image style={styles.image} source={require('../../assets/street_art_two_cats.jpg')} />
                     <Button1 ></Button1>
-                    <Button2></Button2>
+                    <Button2 details='Click Here'></Button2>
                 </ScrollView>
             </View>
         )
