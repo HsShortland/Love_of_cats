@@ -26,7 +26,7 @@ export default function Button1(props) {
     }
 
     return (
-            <FontAwesome.Button  backgroundColor={'#63a4ff'} name="random" onPress={()=>{changeButtonText(); counter();}}>{generateWord}
+            <FontAwesome.Button  color={'#eeffff'} backgroundColor={'#5e92f3'} name="random" onPress={()=>{changeButtonText(); counter();}}>{generateWord}
             </FontAwesome.Button>
 );
 }

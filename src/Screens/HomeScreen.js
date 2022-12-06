@@ -21,13 +21,13 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
 container: {
     flex: 1,
-    backgroundColor: '#e0ccff',
+    backgroundColor: '#003c8f',
     alignItems: 'center',
     justifyContent: 'space-around',
     
 },
 text: {
-color: '#6600ff',
+color: '#bbdefb',
 fontWeight: 'bold',
 margin:10,
 padding:10,
