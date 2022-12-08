@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { useCallback } from 'react';
 
 
-export default function FontAwesomeIcons({navigation}) {
+export default function FontAwesomeIcons({navigation, glyph}) {
     const [fontsLoaded] = useFonts({
         'Font Awesome 6 Free Solid': require('../../assets/fonts/fa-solid-900.ttf'),
     });
@@ -13,7 +13,7 @@ export default function FontAwesomeIcons({navigation}) {
 
     return (
         <View onLayout={onLayoutRootView}>
-        <Text style={{fontFamily:'Font Awesome 6 Free Solid'}}></Text>
+        <Text style={{fontFamily:'Font Awesome 6 Free Solid'}}>{glyph}</Text>
         </View>
 );
-}
+} 

@@ -35,7 +35,6 @@ function removeUser(user){
     <View style={styles.container}>
         <Text style={styles.text}>Welcome to my app all about cats!</Text>
         <StatusBar style="auto" />
-        <FontAwesomeIcons></FontAwesomeIcons>
         <Text style={styles.text}>Cats are totally amazing!</Text>
         <View style={styles.buttons}>
             <Text>User: {user}</Text>

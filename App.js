@@ -37,17 +37,14 @@ return(
     <Tab.Navigator
       screenOptions={({ route }) => ({tabBarIcon: () => {
         if (route.name === 'Home') {
-          return <FontAwesome 
-            name={'home'}/>;
+          return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
             } else if (route.name === 'AboutTheDev') {
-              return <FontAwesome 
-            name={'info'}/>;
+              return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
             } else if (route.name === 'CuteCats') {
-              return <FontAwesomeIcons></FontAwesomeIcons>;
+              return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
             }
             else if (route.name === 'FilmsWithCats') {
-              return <FontAwesome 
-              name={'file-text'}/>;
+              return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
             }
           },
           tabBarActiveTintColor: '#004ba0',
