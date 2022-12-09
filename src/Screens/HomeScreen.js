@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 import Button1 from '../Components/Button1';
 import Button2 from '../Components/Button2';
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import FontAwesomeIcons from '../Components/FontAwesomeIcons';
 
 export default function HomeScreen({navigation}) {
 
@@ -33,9 +31,9 @@ function removeUser(user){
 
         
     <View style={styles.container}>
-        <Text style={styles.text}>Welcome to my app all about cats!</Text>
         <StatusBar style="auto" />
-        <Text style={styles.text}>Cats are totally amazing!</Text>
+        <Text style={styles.text}>Welcome to my app all about cats!</Text>
+        <Text style={styles.text}>{'\n'}{'\n'}Cats are totally amazing!</Text>
         <View style={styles.buttons}>
             <Text>User: {user}</Text>
             <Button title={"ADD_USER"} onPress={() =>addUser("Helen")}></Button>
@@ -67,5 +65,13 @@ buttons: {
     flexGrow: 0.2,
     alignItems: 'center',
     justifyContent: 'flex-start',
+},
+input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    borderColor: '#002a66',
+    padding: 10,
+    backgroundColor: '#bbdefb'
 },
 });

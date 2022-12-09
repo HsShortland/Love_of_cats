@@ -2,9 +2,10 @@ import HomeScreen from './src/Screens/HomeScreen';
 import AboutTheDev from './src/Screens/AboutTheDev';
 import CuteCats from './src/Screens/CuteCats';
 import FilmsWithCats from './src/Screens/FilmsWithCats';
-import { NavigationContainer } from '@react-navigation/native';
+import Login from './src/Screens/Login';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import  FontAwesome  from '@expo/vector-icons/FontAwesome';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import FontAwesomeIcons from './src/Components/FontAwesomeIcons';
@@ -25,18 +26,21 @@ function userReducer(state, action){
   }
 }
 
+const Stack = createNativeStackNavigator();
+
 const initialState = {username:'No user set yet'}
 
 const store = createStore(userReducer, initialState)
 
 const App = () =>{
-
 return(
     <Provider store={store}>
     <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ route }) => ({tabBarIcon: () => {
-        if (route.name === 'Home') {
+        if (route.name === 'Login/Log out') {
+          return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
+        } else if(route.name === 'Home') {
           return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
             } else if (route.name === 'AboutTheDev') {
               return <FontAwesomeIcons glyph={''}></FontAwesomeIcons>;
@@ -52,11 +56,12 @@ return(
           tabBarInactiveBackgroundColor: '#eeffff',
           tabBarActiveBackgroundColor: '#8aacc8'
         })}>
-    <Tab.Screen name="Home"component={HomeScreen} options={{title: 'Welcome'}}/>
-    <Tab.Screen name = "AboutTheDev" component ={AboutTheDev}/>
-    <Tab.Screen name = "CuteCats" component ={CuteCats}/>
-    <Tab.Screen name = "FilmsWithCats" component ={FilmsWithCats}/>
-    </Tab.Navigator>
+      <Tab.Screen name = "Login/Log out" component ={Login}/>
+      <Tab.Screen name="HomeScreen" component={HomeScreen} options={{title: 'Welcome'}}/>
+      <Tab.Screen name = "AboutTheDev" component ={AboutTheDev}/>
+      <Tab.Screen name = "CuteCats" component ={CuteCats}/>
+      <Tab.Screen name = "FilmsWithCats" component ={FilmsWithCats}/>
+      </Tab.Navigator>
 </NavigationContainer>
 </Provider>
   );
