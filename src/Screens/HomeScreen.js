@@ -3,41 +3,21 @@ import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-nat
 import Button1 from '../Components/Button1';
 import Button2 from '../Components/Button2';
 import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
-export default function HomeScreen({navigation}) {
 
-const user = useSelector((state) => state.username)
+export default function HomeScreen() {
 
-const dispatch = useDispatch()
-
-function addUser(user){
-    const action = {
-        type: "ADD_USER",
-        payload: user
-    }
-    dispatch(action)
-}
-
-function removeUser(user){
-    const action = {
-        type: "REMOVE_USER",
-        payload: user
-    }
-    dispatch(action)
-}
+const signUp = useSelector((state) => state.signUpAndLogOut);
 
     return (
 
         
     <View style={styles.container}>
         <StatusBar style="auto" />
-        <Text style={styles.text}>Welcome to my app all about cats!</Text>
+        <Text style={styles.text}>Welcome {signUp.username} to my app all about cats!</Text>
         <Text style={styles.text}>{'\n'}{'\n'}Cats are totally amazing!</Text>
         <View style={styles.buttons}>
-            <Text>User: {user}</Text>
-            <Button title={"ADD_USER"} onPress={() =>addUser("Helen")}></Button>
-            <Button title={"REMOVE_USER"} onPress={()=>removeUser()}></Button>
             <Button1></Button1>
             <Button2 details='Click Here'></Button2>
         </View>
