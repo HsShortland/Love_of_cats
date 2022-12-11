@@ -1,18 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function Login({ navigation }) { 
+export default function Login({ navigation }) {
 
     const [checkUsername, setCheckUsername] = useState(null);
     const [checkPassword, setCheckPassword] = useState(null);
 
-    function successfulLogIn(){
-        const validUsername = 'kit_cats_89';
-        const validPassword = 'Password1!';
-        if (checkUsername == validUsername && checkPassword == validPassword){
-            navigation.navigate('HomeScreen')
-        }else if (checkUsername == null) {
+    const signUp = useSelector((state) => state.signUpAndLogOut);
+
+    function successfulLogIn() {
+        const validUsername = signUp?.username;
+        const validPassword = signUp?.password;
+        if (checkUsername == null) {
             Alert.alert('Login error', 'Username is empty. Please enter your username',
                 [{
                     text: 'OK', onPress: () => console.log('OK pressed')
@@ -22,13 +23,30 @@ export default function Login({ navigation }) {
                 [{
                     text: 'OK', onPress: () => console.log('OK pressed')
                 }])
-        }else {
-            Alert.alert('Incorrect login details entered',  'Please try again',
+        }
+        else if (checkUsername == validUsername && checkPassword == validPassword) {
+            setCheckUsername(null)
+            setCheckPassword(null)
+            navigation.navigate('HomeScreen')
+        }
+        else {
+            Alert.alert('Incorrect login details entered or user does not exist', 'Please click the sign up button to sign up or try entering your details again',
                 [{
                     text: 'OK', onPress: () => console.log('OK pressed')
                 }])
         }
     }
+    const dispatch = useDispatch()
+    function logOut() {
+        const action = {
+            type: "SIGN_OUT",
+        }
+        dispatch(action)
+    }
+    function logOutNavigateToLogin(){
+        navigation.navigate('Login')
+    }
+
 
     return (
         <View style={styles.container}>
@@ -37,12 +55,16 @@ export default function Login({ navigation }) {
                 <Text style={styles.text}>Welcome to my app all about cats!</Text>
                 <View style={styles.buttons}>
                     <Text style={styles.text}>Please login below:</Text>
-                    <TextInput onChangeText={setCheckUsername} style={styles.input} placeholder="username" placeholderTextColor={'#003c8f'} />
-                    <TextInput onChangeText={setCheckPassword} style={styles.input} placeholder="password" placeholderTextColor={'#003c8f'} />
-                    <Button title='Login' onPress={() => {successfulLogIn();}}></Button>
+                    <TextInput value={checkUsername} onChangeText={setCheckUsername} style={styles.input} placeholder="username" placeholderTextColor={'#003c8f'} />
+                    <TextInput value={checkPassword} onChangeText={setCheckPassword} style={styles.input} placeholder="password" placeholderTextColor={'#003c8f'} />
+                    <Button title='Login' onPress={() => { successfulLogIn(); }}></Button>
+                    <Text style={styles.text}>{'\n'}If you don't already have a log in, then please sign up:</Text>
+                    <Button title='Sign up!' onPress={() => navigation.navigate('SignUp')}></Button>
+                    <Button title='Log out' onPress={() => {logOut(); logOutNavigateToLogin();}}></Button>
                 </View>
             </ScrollView>
         </View>
+
     );
 }
 const styles = StyleSheet.create({

@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import Button1 from '../Components/Button1';
 import Button2 from '../Components/Button2';
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { times } from 'lodash';
+import { connect } from 'react-redux';
+
 
 class AboutTheDev extends React.Component {
 
@@ -24,12 +24,15 @@ class AboutTheDev extends React.Component {
         console.log(`About the dev screen has successfully mounted: ${Date.now()}`)
     }
     render() {
+        const { username } = this.props;
+
         return (
             <View style={styles.container}>
+                <Text style={styles.text}>Welcome {username}</Text>
                 <Text style={styles.text}>About The Dev!!</Text>
+                <Text style={styles.text}>Totally obsessed with cats!</Text>
                 <StatusBar style="auto" />
                 <Button title="About The Dev!" onPress={this.update}></Button>
-                <Text style={styles.text}>Totally obsessed with cats!</Text>
                 <View style={styles.buttons}>
                     <Button1 ></Button1>
                     <Button2 details='Click Here'></Button2>
@@ -64,4 +67,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AboutTheDev;
+const mapStateToProps = (state) => ({
+    username: state.signUpAndLogOut.username,
+});
+
+export default connect(mapStateToProps)(AboutTheDev);

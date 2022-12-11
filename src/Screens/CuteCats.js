@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, Button, Image, ScrollView} from 'react-native';
 import Button1 from '../Components/Button1';
 import Button2 from '../Components/Button2';
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { times } from 'lodash';
+import { connect } from 'react-redux';
 
 class CuteCats extends React.Component {
 
@@ -24,9 +23,11 @@ class CuteCats extends React.Component {
         console.log(`Cute Cats screen has successfully mounted: ${Date.now()}`)
     }
     render() {
+        const { username } = this.props;
         return (
             <View style={styles.container}>
                 <ScrollView style={styles.scrollView}>
+                    <Text style={styles.text}>Welcome {username}</Text>
                     <Text style={styles.text}>Cute Cats!!</Text>
                     <StatusBar style="auto" />
                     <Button title="I love cats!" onPress={this.update}></Button>
@@ -46,7 +47,11 @@ class CuteCats extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => ({
+    username: state.signUpAndLogOut.username,
+});
 
+export default connect(mapStateToProps)(CuteCats);
 
 const styles = StyleSheet.create({
     container: {
@@ -78,5 +83,3 @@ const styles = StyleSheet.create({
     scrollView: {
     },
 });
-
-export default CuteCats;
