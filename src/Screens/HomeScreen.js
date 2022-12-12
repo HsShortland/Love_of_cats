@@ -3,12 +3,23 @@ import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-nat
 import Button1 from '../Components/Button1';
 import Button2 from '../Components/Button2';
 import * as React from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 
 
-export default function HomeScreen() {
+
+export default function HomeScreen({navigation}) {
 
 const signUp = useSelector((state) => state.signUpAndLogOut);
+const dispatch = useDispatch()
+function logOut() {
+    const action = {
+        type: "SIGN_OUT",
+    }
+    dispatch(action)
+}
+function logOutNavigateToLogin(){
+    navigation.navigate('Login')
+}
 
     return (
 
@@ -20,6 +31,7 @@ const signUp = useSelector((state) => state.signUpAndLogOut);
         <View style={styles.buttons}>
             <Button1></Button1>
             <Button2 details='Click Here'></Button2>
+            <Button title='Log out' onPress={() => {logOut(); logOutNavigateToLogin();}}></Button>
         </View>
     </View>
 );
